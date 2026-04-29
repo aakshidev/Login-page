@@ -3,172 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forms</title>
-  <style>
+    <title>Login</title>
+
     <style>
-:root {
-  --bg: #080d1a;
-  --card: #111827;
-  --accent: #6ee7b7;
-  --accent2: #38bdf8;
-  --text: #e2e8f0;
-  --muted: #94a3b8;
-  --border: rgba(255,255,255,0.08);
-}
+        :root {
+            --bg: #f8f5f7;
+            --card: #ffffff;
+            --accent: #800020;
+            --accent2: #a8324a;
+            --text: #2d2d2d;
+            --muted: #777;
+            --border: rgba(0,0,0,0.08);
+        }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: 'DM Sans', sans-serif;
-}
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'DM Sans', sans-serif;
+        }
 
-body {
-  height: 100vh;
-  background: var(--bg);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+        body {
+            height: 100vh;
+            background: var(--bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-/* subtle grid background */
-body::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  background-image: 
-    linear-gradient(rgba(110,231,183,0.03) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(110,231,183,0.03) 1px, transparent 1px);
-  background-size: 60px 60px;
-}
+        /* container */
+        .container {
+            width: 100%;
+            max-width: 380px;
+            padding: 20px;
+        }
 
-/* container */
-.container {
-  width: 100%;
-  max-width: 380px;
-  padding: 20px;
-}
+        /* form card */
+        .form-box {
+            background: var(--card);
+            border-radius: 14px;
+            padding: 35px 30px;
+            box-shadow: 0 10px 30px rgba(128, 0, 32, 0.08);
+            border: 1px solid var(--border);
+            animation: fadeUp 0.6s ease;
+        }
 
-/* form card */
-.form-box {
-  background: rgba(17, 24, 39, 0.85);
-  backdrop-filter: blur(12px);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 35px 30px;
-  animation: fadeUp 0.6s ease;
-}
+        /* title */
+        h1 {
+            text-align: center;
+            margin-bottom: 25px;
+            font-size: 28px;
+            color: var(--accent);
+        }
 
-/* title */
-h1 {
-  text-align: center;
-  margin-bottom: 25px;
-  font-size: 28px;
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-}
+        /* input box */
+        .input-box {
+            margin-bottom: 18px;
+        }
 
-/* input box */
-.input-box {
-  margin-bottom: 18px;
-}
+        .input-box input {
+            width: 100%;
+            padding: 12px 14px;
+            background: #fafafa;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            color: var(--text);
+            font-size: 14px;
+            outline: none;
+            transition: 0.2s;
+        }
 
-.input-box input {
-  width: 100%;
-  padding: 12px 14px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  color: var(--text);
-  font-size: 14px;
-  outline: none;
-  transition: 0.2s;
-}
+        .input-box input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(128, 0, 32, 0.1);
+        }
 
-.input-box input:focus {
-  border-color: rgba(110,231,183,0.4);
-  box-shadow: 0 0 0 3px rgba(110,231,183,0.08);
-}
+        /* forgot */
+        .forgot-link {
+            text-align: right;
+            margin-bottom: 18px;
+        }
 
-/* forgot */
-.forgot-link {
-  text-align: right;
-  margin-bottom: 18px;
-}
+        .forgot-link a {
+            color: var(--muted);
+            font-size: 12px;
+            text-decoration: none;
+        }
 
-.forgot-link a {
-  color: var(--muted);
-  font-size: 12px;
-  text-decoration: none;
-}
+        .forgot-link a:hover {
+            color: var(--accent);
+        }
 
-.forgot-link a:hover {
-  color: var(--accent);
-}
+        /* button */
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(135deg, var(--accent), var(--accent2));
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
 
-/* button */
-.btn {
-  width: 100%;
-  padding: 12px;
-  background: linear-gradient(135deg, var(--accent), var(--accent2));
-  border: none;
-  border-radius: 8px;
-  color: #080d1a;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.2s;
-}
+        .btn:hover {
+            transform: translateY(-1px);
+            opacity: 0.9;
+        }
 
-.btn:hover {
-  transform: translateY(-1px);
-  opacity: 0.9;
-}
+        /* message */
+        .message {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 13px;
+            color: var(--accent);
+            display: none;
+        }
 
-/* message */
-.message {
-  text-align: center;
-  margin-top: 15px;
-  font-size: 13px;
-  color: var(--accent);
-  display: none;
-}
-
-/* animation */
-@keyframes fadeUp {
-  from {
-    opacity: 0;
-    transform: translateY(25px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-  </style>
+        /* animation */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
 </head>
-<body>
-    <ddiv class="container">
-        <div class="form-box login">
-            <form action="">
-                <h1>Login</h1>
-                <div class="input-box">
-                    <input type="text" placeholder="username" required>
-                    </div>
-                    <div class="input-box">
-                    <input type="password" placeholder="Password" required>
-                    </div>
-                    <div class="forgot-link">
-                        <a href="#">forgot password?</a>
-                    </div>
-                    <button type="submit" class="btn">Login</button>
-                    
-            </form>
 
+<body>
+
+    <div class="container">
+        <div class="form-box login">
+            <form>
+                <h1>Login</h1>
+
+                <div class="input-box">
+                    <input type="text" placeholder="Username" required>
+                </div>
+
+                <div class="input-box">
+                    <input type="password" placeholder="Password" required>
+                </div>
+
+                <div class="forgot-link">
+                    <a href="#">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="btn">Login</button>
+            </form>
         </div>
     </div>
 
-    <script src="script.js"></script>
-    
 </body>
 </html>
